@@ -1,0 +1,30 @@
+version: '3'
+services:
+  web:
+    build: .
+    ports:
+      - "8081:8080"
+    depends_on:
+      - db
+    env_file:
+      - docker.env
+    command: mvn spring-boot:run
+    volumes:
+      - .:/app
+      - maven_repository:/root/.m2
+
+  db:
+    image: "postgres:13-alpine"
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - postgres_volume:/var/lib/postgresql/data
+
+volumes:
+  postgres_volume:
+    driver: local
+  maven_repository:
+    driver: local
+
