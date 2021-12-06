@@ -5,7 +5,8 @@ import javax.persistence.*;
 @Entity
 public class Media {
     public static enum Type {
-        SimpleMedia
+        SimpleMedia,
+        ProfilePicture
     }
 
     // <editor-fold desc="Fields">
