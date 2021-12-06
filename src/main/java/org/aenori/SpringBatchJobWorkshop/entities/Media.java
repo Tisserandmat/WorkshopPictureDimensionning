@@ -14,7 +14,6 @@ public class Media {
     private Integer id;
     private String name;
     private Type mediaType;
-    private boolean amazonS3Hosted;
     // </editor-fold>
 
     // <editor-fold desc="Constructor">
