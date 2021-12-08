@@ -1,7 +1,6 @@
 package org.aenori.SpringBatchJobWorkshop.utils;
 
 import org.springframework.data.util.Pair;
-import processing.core.PImage;
 
 import javax.imageio.ImageIO;
 import java.awt.*;

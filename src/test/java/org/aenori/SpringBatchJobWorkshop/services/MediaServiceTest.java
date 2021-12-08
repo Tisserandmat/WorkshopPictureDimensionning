@@ -19,9 +19,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest
 @ActiveProfiles("test")
 @Transactional
-class MediaServiceTest {
+class MediaProcessingServiceTest {
     @Autowired
-    MediaService mediaService;
+    MediaProcessingService mediaProcessingService;
 
     @Value("${amazon.aws.s3.accesskey}")
     private String s3_access_key;
@@ -36,7 +36,7 @@ class MediaServiceTest {
         try (InputStream inputStream = new FileInputStream(
                 testFile
         )) {
-            mediaService.saveMedia(
+            mediaProcessingService.saveFile(
                     objectKey,
                     inputStream,
                     testFile.length()
@@ -46,6 +46,6 @@ class MediaServiceTest {
             fail("IOException caught");
         }
 
-        mediaService.deleteFile(objectKey);
+        mediaProcessingService.deleteFile(objectKey);
     }
 }

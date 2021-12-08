@@ -9,12 +9,20 @@ public class Media {
         ProfilePicture
     }
 
+    public static enum Status {
+        Ok,
+        Waiting,
+        Processing,
+        Error
+    }
+
     // <editor-fold desc="Fields">
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer id;
     private String name;
     private Type mediaType;
+    private Status status;
     // </editor-fold>
 
     // <editor-fold desc="Constructor">
@@ -26,8 +34,9 @@ public class Media {
     public Media(String objectKey, String mediaType) {
         this(objectKey, Type.valueOf(mediaType));
     }
-    public Media(String objectKey, Type mediaType, boolean amazonS3Hosted) {
+    public Media(String objectKey, Type mediaType, Status status) {
         this.mediaType = mediaType;
+        this.status = status;
         this.name = objectKey;
     }
     // </editor-fold>
@@ -55,6 +64,14 @@ public class Media {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
     // </editor-fold>
 }
